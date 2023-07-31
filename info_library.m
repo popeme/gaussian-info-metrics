@@ -100,7 +100,7 @@ function joint_ents = local_gaussian_joint_entropy(X)
     mu = mean(X,2);
     sigma = std(X,0,2);
     
-    cv = reshape(cov(X',1),[size(X,1),size(X,1)]); %if something is off check this row because of degree of freedom thing
+    cv = reshape(cov(X',1),[size(X,1),size(X,1)]); 
     iv = inv(cv);
     
     dt = det(cv);
