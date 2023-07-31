@@ -1,4 +1,4 @@
-classdef lib
+classdef info_library
     methods(Static)
 
 % ﻿MATLAB code for calculating local mutual information,
