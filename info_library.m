@@ -46,7 +46,7 @@ end
 % Essentially just a -log() wrapper for the _gaussian_2d() function. 
 
 function LE2d = local_entropy_2d(x,mu,sigma,rho)
-    LE = -log(lib2_1.gaussian(x,mu,sigma));
+    LE = -log(lib2_1.gaussian_2d(x,mu,sigma,rho));
 end
 
 % Calculates the local mutual inforamtion a 2-dimensional vector pulled from a bivariate Gaussian.
@@ -203,15 +203,6 @@ function LS = local_s_information(X,varargin)
     LS = lib2_1.local_total_correlation(X,X_full) + lib2_1.local_dual_total_correlation(X,X_full);
 end
 
-%     Gives the total correlation (integration) of a multidimensional timeseries X.
-%     No local component, relies on the determinant of the correlation matrix.
-%     For local gaussian total correlation see the local_total_correlation() function. 
-
-function gtc = gaussian_total_correlation(X)
-    cor = corr(X','type','Pearson');    
-    dt = det(cor);
-    gtc = -log(dt)/2;
-end
 
 %    Gives I(X;Y) where X and Y are two 1-dimensional, z-scored timeseries. 
 %    Closed-form conversion of a Pearson correlation coefficient to MI.  
@@ -221,5 +212,5 @@ function g_mi = gaussian_mi(X,Y)
     g_mi = -0.5*log(1-(rho^2));
 end
 
-    end
+end
 end
